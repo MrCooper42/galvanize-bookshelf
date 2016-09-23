@@ -4,9 +4,7 @@ const bcrypt = require('bcrypt-as-promised');
 const boom = require('boom');
 const express = require('express');
 const knex = require('../knex');
-const {
-  camelizeKeys
-} = require('humps');
+const humps = require('humps');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -42,7 +40,7 @@ router.post('/', (req, res, next) => {
         throw boom.create(400, 'Bad email or password');
       }
 
-      user = camelizeKeys(row);
+      user = humps.camelizeKeys(row);
 
       return bcrypt.compare(password, user.hashedPassword);
 
