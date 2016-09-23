@@ -9,14 +9,5 @@ module.exports = {
     'next-line': 'off',
     'max-statements': 'off',
     'indent': 'off',
-  },
-  "ecmaFeatures": {
-    "blockBindings": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
-  },
+  }
 };
