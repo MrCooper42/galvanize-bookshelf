@@ -7,6 +7,7 @@ module.exports = {
     'no-multiple-empty-lines': 'off',
     'new-cap': 'off',
     'next-line': 'off',
+    'max-statements': 'off',
     'indent': 'off',
   },
   "ecmaFeatures": {
