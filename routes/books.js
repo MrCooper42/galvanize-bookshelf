@@ -45,13 +45,11 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const {
-    title,
-    author,
-    genre,
-    description,
-    coverUrl
-  } = req.body;
+  const title = req.body.title;
+  const author = req.body.author;
+  const coverUrl = req.body.coverUrl;
+  const description = req.body.description;
+  const genre = req.body.genre;
 
   if (!title || !title.trim()) {
     return next(boom.create(400, 'Fill out the title'));
