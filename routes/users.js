@@ -9,10 +9,8 @@ const humps = require('humps');
 const router = express.Router();
 
 router.post('/', (req, res, next) => {
-  const {
-    email,
-    password
-  } = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
 
   if (!email || !email.trim()) {
     return next(boom.create(400, 'Email must not be blank'));
@@ -37,10 +35,8 @@ router.post('/', (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const {
-        firstName,
-        lastName
-      } = req.body;
+      const firstName = req.body.firstName;
+      const lastName = req.body.lastName;
       const createUser = {
         firstName,
         lastName,
