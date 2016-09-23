@@ -9,8 +9,7 @@
     "nf": "nf start",
     "start": "nodemon server.js",
     "test": "mocha",
-    "heroku-postbuild": "knex migrate:latest",
-    "nf": "nf start"
+    "heroku-postbuild": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
