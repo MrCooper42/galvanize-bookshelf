@@ -106,13 +106,11 @@ router.patch('/:id', (req, res, next) => {
         throw boom.create(404, 'Not Found');
       }
 
-      const {
-        title,
-        author,
-        genre,
-        description,
-        coverUrl
-      } = req.body;
+      const title = req.body.title;
+      const author = req.body.author;
+      const coverUrl = req.body.coverUrl;
+      const description = req.body.description;
+      const genre = req.body.genre;
       const updateBook = {};
 
       if (title) {
