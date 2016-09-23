@@ -2,9 +2,12 @@
 
 'use strict';
 
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'development';
 
-const { suite, test } = require('mocha');
+const {
+  suite,
+  test
+} = require('mocha');
 const bcrypt = require('bcrypt');
 const request = require('supertest');
 const knex = require('../knex');
@@ -86,6 +89,6 @@ suite('part3 routes bonus', () => {
         done(err);
       });
 
-      /* eslint-enable no-sync */
+    /* eslint-enable no-sync */
   });
 });

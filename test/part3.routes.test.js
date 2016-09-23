@@ -2,10 +2,13 @@
 
 'use strict';
 
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'development';
 
 const assert = require('chai').assert;
-const { suite, test } = require('mocha');
+const {
+  suite,
+  test
+} = require('mocha');
 const bcrypt = require('bcrypt');
 const request = require('supertest');
 const knex = require('../knex');

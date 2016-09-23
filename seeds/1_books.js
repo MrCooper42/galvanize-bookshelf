@@ -1,32 +1,7 @@
-/* eslint-disable camelcase */
 'use strict';
-process.env.NODE_ENV = 'development';
-const assert = require('chai').assert;
-const {
-  suite,
-  test
-} = require('mocha');
-const knex = require('../knex');
-
-suite('part1 seeds', () => {
-  before((done) => {
-    knex.migrate.latest().then(() => {
-      done();
-    }).catch((err) => {
-      done(err);
-    });
-  });
-  beforeEach((done) => {
-    knex.seed.run().then(() => {
-      done();
-    }).catch((err) => {
-      done(err);
-    });
-  });
-  test('books rows', (done) => {
-    knex('books').orderBy('id', 'ASC').then((actual) => {
-      /* eslint-disable max-len */
-      const expected = [{
+exports.seed = function(knex) {
+  return knex('books').del().then(() => {
+      return knex('books').insert([{
         id: 1,
         title: 'JavaScript, The Good Parts',
         author: 'Douglas Crockford',
@@ -98,15 +73,11 @@ suite('part1 seeds', () => {
         cover_url: 'http://akamaicovers.oreilly.com/images/0636920032977/lrg.jpg',
         created_at: new Date('2016-06-26 14:26:16 UTC'),
         updated_at: new Date('2016-06-26 14:26:16 UTC')
-      }];
-
-      /* eslint-enable max-len */
-      for (let i = 0; i < expected.length; i++) {
-        assert.deepEqual(actual[i], expected[i], `Row id=${i + 1} not the same`);
-      }
-      done();
-    }).catch((err) => {
-      done(err);
+      }]);
+    })
+    .then(() => {
+      return knex.raw(
+        "SELECT setval('books_id_seq', (SELECT MAX(id) FROM books));"
+      );
     });
-  });
-});
+};

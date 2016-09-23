@@ -1,8 +1,11 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'development';
 
-const { suite, test } = require('mocha');
+const {
+  suite,
+  test
+} = require('mocha');
 const request = require('supertest');
 const knex = require('../knex');
 const server = require('../server');
@@ -67,7 +70,7 @@ suite('part2 routes bonus', () => {
       .expect('Content-Type', /plain/)
       .expect(400, 'Title must not be blank', done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('POST /books without author', (done) => {
@@ -84,7 +87,7 @@ suite('part2 routes bonus', () => {
       .expect('Content-Type', /plain/)
       .expect(400, 'Author must not be blank', done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('POST /books without genre', (done) => {
@@ -101,7 +104,7 @@ suite('part2 routes bonus', () => {
       .expect('Content-Type', /plain/)
       .expect(400, 'Genre must not be blank', done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('POST /books without description', (done) => {
@@ -118,7 +121,7 @@ suite('part2 routes bonus', () => {
       .expect('Content-Type', /plain/)
       .expect(400, 'Description must not be blank', done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('POST /books without coverUrl', (done) => {
@@ -135,7 +138,7 @@ suite('part2 routes bonus', () => {
       .expect('Content-Type', /plain/)
       .expect(400, 'Cover URL must not be blank', done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('PATCH /books/9000', (done) => {

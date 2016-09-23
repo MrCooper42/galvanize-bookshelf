@@ -1,8 +1,11 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'development';
 
-const { suite, test } = require('mocha');
+const {
+  suite,
+  test
+} = require('mocha');
 const request = require('supertest');
 const knex = require('../knex');
 const server = require('../server');
@@ -108,7 +111,7 @@ suite('part2 routes', () => {
         updatedAt: '2016-06-26T14:26:16.000Z'
       }], done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('GET /books/:id', (done) => {
@@ -128,7 +131,7 @@ suite('part2 routes', () => {
         updatedAt: '2016-06-26T14:26:16.000Z'
       }, done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('POST /books', (done) => {
@@ -157,7 +160,7 @@ suite('part2 routes', () => {
         coverUrl: 'https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/think_python.jpg'
       }, done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('PATCH /books/:id', (done) => {
@@ -186,7 +189,7 @@ suite('part2 routes', () => {
         coverUrl: 'https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/think_python.jpg'
       }, done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 
   test('DELETE /books/:id', (done) => {
@@ -207,6 +210,6 @@ suite('part2 routes', () => {
         coverUrl: 'https://students-gschool-production.s3.amazonaws.com/uploads/asset/file/284/javascript_the_good_parts.jpg'
       }, done);
 
-      /* eslint-enable max-len */
+    /* eslint-enable max-len */
   });
 });
