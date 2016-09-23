@@ -7,6 +7,15 @@ module.exports = {
     'no-multiple-empty-lines': 'off',
     'new-cap': 'off',
     'next-line': 'off',
-    'indent': 'off'
-  }
+    'indent': 'off',
+  },
+  "ecmaFeatures": {
+    "blockBindings": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
 };
