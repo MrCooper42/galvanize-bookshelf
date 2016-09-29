@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
       user = humps.camelizeKeys(row);
 
       return bcrypt.compare(password, user.hashedPassword);
-    });
+    })
     .then(() => {
       delete user.hashedPassword;
 
