@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res, next) => {
-  const email = req.body.password;
-  const password = req.body.password;
+  const email = req.body;
+  const password = req.body;
 
   if (!email || !email.trim()) {
     return next(boom.create(400, 'Email must not be blank'));
@@ -41,15 +41,7 @@ router.post('/', (req, res, next) => {
       user = humps.camelizeKeys(row);
 
       return bcrypt.compare(password, user.hashedPassword);
-
-      // const passed = bcrypt.compare(password, user.hashedPassword);
-      //
-      // if (!passed) {
-      //   throw boom.create(400, 'Bad email or password');
-      // }
-      //
-      // return passed;
-    })
+    });
     .then(() => {
       delete user.hashedPassword;
 
