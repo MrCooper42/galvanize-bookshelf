@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res, next) => {
-  const email = req.body;
-  const password = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
 
   if (!email || !email.trim()) {
     return next(boom.create(400, 'Email must not be blank'));
