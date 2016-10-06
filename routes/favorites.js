@@ -5,6 +5,9 @@ const boom = require('boom');
 const knex = require('../knex');
 const humps = require('humps');
 
+const ev = require('express-validation');
+const validations = require('../validations/favorites');
+
 const router = express.Router();
 
 const authorized = (req, res, next) => {
@@ -57,6 +60,7 @@ router.get('/check', authorized, (req, res, next) => {
 });
 
 router.post('/', authorized, (req, res, next) => {
+  ev(validations.post)
   const bookId = Number.parseInt(req.body.bookId);
 
   if (Number.isInteger(bookId) === false) {

@@ -73,6 +73,15 @@ app.use((err, _req, res, _next) => {
   res.sendStatus(500);
 });
 
+app.use((err, _req, res, _next) => {
+  if (err.status) {
+    return res.status(err.status).send(err);
+  }
+
+  console.error(err);
+  res.sendStatus(500);
+});
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {

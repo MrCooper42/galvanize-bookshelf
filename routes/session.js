@@ -6,6 +6,9 @@ const express = require('express');
 const knex = require('../knex');
 const humps = require('humps');
 
+const ev = require('express-validation');
+const validations = require('../validations/sessions');
+
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
@@ -16,7 +19,7 @@ router.get('/', (req, res) => {
   res.send(false);
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 

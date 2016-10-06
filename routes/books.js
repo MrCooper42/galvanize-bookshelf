@@ -5,6 +5,9 @@ const express = require('express');
 const knex = require('../knex');
 const humps = require('humps');
 
+const ev = require('express-validation');
+const validations = require('../validations/books');
+
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
@@ -44,7 +47,7 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   const title = req.body.title;
   const author = req.body.author;
   const coverUrl = req.body.coverUrl;
