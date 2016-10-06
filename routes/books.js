@@ -10,6 +10,14 @@ const validations = require('../validations/books');
 
 const router = express.Router();
 
+const authorized = (req, res, next) => {
+  if (!req.session.userId) {
+    return next(boom.create(401, 'Unauthorized'));
+  }
+
+  next();
+};
+
 router.get('/', (req, res, next) => {
   knex('books')
     .orderBy('title')
@@ -94,7 +102,7 @@ router.post('/', ev(validations.post), (req, res, next) => {
     });
 });
 
-router.patch('/:id', ev(validations.post), (req, res, next) => {
+router.patch('/:id', authorized, (req, res, next) => {
   const id = Number.parseInt(req.params.id);
 
   if (Number.isNaN(id)) {
